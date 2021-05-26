@@ -15,12 +15,10 @@ func main() {
 
 	l := log.New(os.Stdout, "product-api ", log.LstdFlags) // a new Logger (maybe to a database)
 
-	hh := handlers.NewHello(l)   // hello handler
-	gh := handlers.NewGoodbye(l) // goodbye handler
+	ph := handlers.NewProduct(l) // Product handler
 
 	sm := http.NewServeMux() // serve mux
-	sm.Handle("/", hh)       // Register any path to hello handler
-	sm.Handle("/bye", gh)    // Register bye path to goodbye handler
+	sm.Handle("/", ph)       // Register any path to product handler
 
 	s := &http.Server{ // custom server
 		Addr:         ":9090",
